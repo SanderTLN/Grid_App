@@ -117,23 +117,20 @@ namespace Grid_App
 
             if (checkDraw() == true)
             {
-                DisplayAlert("End Of The Game", "Draw", "New Game");
-                Reset();
+                DisplayAlert("End Of The Game", wnr, "New Game");
                 stps = 0;
             }
 
             else if (checkWinnerY() == true)
             {
-                DisplayAlert("End Of The Game", "Someone Won", "New Game");
-                Reset();
+                DisplayAlert("End Of The Game", wnr, "New Game");
             }
             else if (checkWinnerX() == true)
             {
-                DisplayAlert("End Of The Game", "Someone Won", "New Game");
-                Reset();
+                DisplayAlert("End Of The Game", wnr, "New Game");
             }
         }
-        bool checkDraw()
+        bool checkDraw() //Проверка на ничью
         {
             if (stps == 9)
             {
@@ -144,30 +141,37 @@ namespace Grid_App
                 return false;
             }
         }
+        string wnr = "";
         bool checkWinnerX()
         {
             if (KresNoli[0, 0].Text == "X" && KresNoli[1, 0].Text == "X" && KresNoli[2, 0].Text == "X")
             {
+                wnr = "Cross Won";
                 return true; ;
             }
             else if (KresNoli[0, 1].Text == "X" && KresNoli[1, 1].Text == "X" && KresNoli[2, 1].Text == "X")
             {
+                wnr = "Cross Won";
                 return true;
             }
             else if (KresNoli[0, 2].Text == "X" && KresNoli[1, 2].Text == "X" && KresNoli[2, 2].Text == "X")
             {
+                wnr = "Cross Won";
                 return true;
             }
-            if (KresNoli[0, 0].Text == "0" && KresNoli[1, 0].Text == "0" && KresNoli[2, 0].Text == "0")
+            else if (KresNoli[0, 0].Text == "0" && KresNoli[1, 0].Text == "0" && KresNoli[2, 0].Text == "0")
             {
+                wnr = "Zero Won";
                 return true; ;
             }
             else if (KresNoli[0, 1].Text == "0" && KresNoli[1, 1].Text == "0" && KresNoli[2, 1].Text == "0")
             {
+                wnr = "Zero Won";
                 return true;
             }
             else if (KresNoli[0, 2].Text == "0" && KresNoli[1, 2].Text == "0" && KresNoli[2, 2].Text == "0")
             {
+                wnr = "Zero Won";
                 return true;
             }
             else
@@ -177,28 +181,67 @@ namespace Grid_App
         }
         bool checkWinnerY()
         {
+
             if (KresNoli[0, 0].Text == "X" && KresNoli[0, 1].Text == "X" && KresNoli[0, 2].Text == "X")
             {
+                wnr = "Cross Won";
                 return true; ;
             }
-            else if (KresNoli[1, 1].Text == "X" && KresNoli[1, 1].Text == "X" && KresNoli[1, 2].Text == "X")
+
+            else if (KresNoli[1, 0].Text == "X" && KresNoli[1, 1].Text == "X" && KresNoli[1, 2].Text == "X")
             {
+                wnr = "Cross Won";
                 return true;
             }
+
             else if (KresNoli[2, 0].Text == "X" && KresNoli[2, 1].Text == "X" && KresNoli[2, 2].Text == "X")
             {
+                wnr = "Cross Won";
                 return true;
             }
-            if (KresNoli[0, 0].Text == "0" && KresNoli[0, 1].Text == "0" && KresNoli[0, 2].Text == "0")
+
+            else if (KresNoli[0, 0].Text == "0" && KresNoli[0, 1].Text == "0" && KresNoli[0, 2].Text == "0")
             {
+                wnr = "Zero Won";
                 return true; ;
             }
-            else if (KresNoli[1, 1].Text == "0" && KresNoli[1, 1].Text == "0" && KresNoli[1, 2].Text == "0")
+
+            else if (KresNoli[1, 0].Text == "0" && KresNoli[1, 1].Text == "0" && KresNoli[1, 2].Text == "0")
             {
+                wnr = "Zero Won";
                 return true;
             }
+
             else if (KresNoli[2, 0].Text == "0" && KresNoli[2, 1].Text == "X" && KresNoli[2, 2].Text == "0")
             {
+                wnr = "Zero Won";
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        bool checkWinnerXY()
+        {
+            if (KresNoli[0, 0].Text == "X" && KresNoli[1, 1].Text == "X" && KresNoli[2, 2].Text == "X")
+            {
+                wnr = "Cross Won";
+                return true; ;
+            }
+            else if (KresNoli[2, 0].Text == "X" && KresNoli[1, 1].Text == "X" && KresNoli[0, 2].Text == "X")
+            {
+                wnr = "Cross Won";
+                return true;
+            }
+            else if (KresNoli[0, 0].Text == "0" && KresNoli[1, 1].Text == "0" && KresNoli[2, 2].Text == "0")
+            {
+                wnr = "Zero Won";
+                return true; ;
+            }
+            else if (KresNoli[2, 0].Text == "0" && KresNoli[1, 1].Text == "0" && KresNoli[0, 2].Text == "0")
+            {
+                wnr = "Zero Won";
                 return true;
             }
             else
